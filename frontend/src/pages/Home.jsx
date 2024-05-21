@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
   return  <main id='intro' className="top-page">
-      <header>
+      <header id="intro-header">
     <a id='logo' href='/'> </a>
     <nav>
       <ul>
@@ -19,6 +19,7 @@ export default function HomePage() {
   </header>
   <p className="txt" contenteditable="true" >
   WELCOME YOU PUSSIES</p> 
+  {/* https://codepen.io/yemon/pen/BwOOWZ */}
   {/* <motion.main
   className="main__container"
   initial={{ width: 0 }}
