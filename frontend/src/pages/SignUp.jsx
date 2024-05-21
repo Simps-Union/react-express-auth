@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
@@ -35,38 +36,24 @@ export default function SignUpPage() {
     if (name === 'password') setPassword(value);
   };
 
-  return <>
-    <h1>Sign Up</h1>
-    <form onSubmit={handleSubmit} onChange={handleChange} aria-labelledby="create-heading">
-      <h2 id="create-heading">Create New User</h2>
-      <label htmlFor="username">Username</label>
-      <input
-        autoComplete="off"
-        type="text"
-        id="username"
-        name="username"
-        onChange={handleChange}
-        value={username}
-      />
+  return <div id="despage" className="top-page">
+    <header>
+      <a id='logo' href='/'>Created by Isaac </a>
+      <nav>
+        <ul>
+          <li><NavLink to='/'>Home</NavLink></li>
+          <>
+            <li><NavLink to='/login'>Creative</NavLink></li>
+            <li><NavLink to='/sign-up'>Development</NavLink></li>
+          </>
+        </ul>
+      </nav>
+    </header>
+    <h1 className="dev-strobe">Development Page</h1>
 
-      <label htmlFor="password">Password</label>
-      <input
-        autoComplete="off"
-        type="password"
-        id="password"
-        name="password"
-        onChange={handleChange}
-        value={password}
-      />
+    <a id="light-button" href="/login">Designer</a>
 
-      {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
-        <label htmlFor="password-confirm">Password Confirm</label>
-        <input autoComplete="off" type="password" id="password-confirm" name="passwordConfirm" />
-      */}
-
-      <button>Sign Up Now!</button>
-    </form>
     {!!errorText && <p>{errorText}</p>}
-    <p>Already have an account with us? <Link to="/login">Log in!</Link></p>
-  </>;
+    <p className="dev-strobe">Already have an account with us? <Link to="/login">Log in!</Link></p>
+  </div>;
 }

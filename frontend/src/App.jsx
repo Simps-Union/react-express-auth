@@ -1,5 +1,7 @@
 import { useContext, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from "framer-motion";
+
 import Home from './pages/Home';
 import SignUpPage from './pages/SignUp';
 import LoginPage from './pages/Login';
@@ -11,12 +13,16 @@ import UsersPage from './pages/Users';
 import UserPage from './pages/User';
 
 export default function App() {
+  const location = useLocation();
+
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
     checkForLoggedInUser().then(setCurrentUser);
   }, [setCurrentUser]);
 
   return <>
+        <AnimatePresence onExitComplete={100}>
+
     <SiteHeadingAndNav />
     <main>
       <Routes>
@@ -28,5 +34,6 @@ export default function App() {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>
+        </AnimatePresence>
   </>;
 }
